@@ -15,6 +15,9 @@ def flatten_dict(d: dict[str, Any]):
                 {f"{key}.{child_key}": value for child_key, value in children}
             )
         else:
+            if not isinstance(value, int) and not isinstance(value, str):
+                raise ValueError("Values must be int, str or dict")
+            
             flattened[key] = value
 
     return flattened

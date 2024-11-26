@@ -22,3 +22,8 @@ def test_non_dictionary_raises_value_error(value):
 def test_child_empty_dictionary():
     flattened = flatten_dict({"foo": "bar", "baz": {}})
     assert flattened == {"foo": "bar"}
+
+
+def test_child_is_list():
+    with pytest.raises(ValueError):
+        flatten_dict({"foo": ["bar"]})
